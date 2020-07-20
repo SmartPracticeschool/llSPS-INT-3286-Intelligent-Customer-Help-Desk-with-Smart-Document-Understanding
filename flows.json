@@ -1,0 +1,170 @@
+[
+    {
+        "id": "b7e0b3e4.d94dd8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9255d0e6.c74d58",
+        "type": "ui_form",
+        "z": "b7e0b3e4.d94dd8",
+        "name": "",
+        "label": "",
+        "group": "91d84b72.95c97",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Enter Input",
+                "value": "text",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "text": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 70,
+        "y": 180,
+        "wires": [
+            [
+                "c0118702.b1976"
+            ]
+        ]
+    },
+    {
+        "id": "c0118702.b1976",
+        "type": "function",
+        "z": "b7e0b3e4.d94dd8",
+        "name": "",
+        "func": "msg.payload=msg.payload.text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "ea5199a.67e9768",
+                "a25feadc.addef8"
+            ]
+        ]
+    },
+    {
+        "id": "f0683906.6ba558",
+        "type": "function",
+        "z": "b7e0b3e4.d94dd8",
+        "name": "",
+        "func": "msg.payload=msg.payload.output.text[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 540,
+        "y": 180,
+        "wires": [
+            [
+                "8f2ece2b.96bff"
+            ]
+        ]
+    },
+    {
+        "id": "ea5199a.67e9768",
+        "type": "watson-conversation-v1",
+        "z": "b7e0b3e4.d94dd8",
+        "name": "",
+        "workspaceid": "1533c868-a5c2-4825-b6cd-d173a9cbb05b",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/d444e105-d2af-4761-9a86-23c18c42fde9",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "419b8514.94a9ac",
+                "f0683906.6ba558"
+            ]
+        ]
+    },
+    {
+        "id": "419b8514.94a9ac",
+        "type": "debug",
+        "z": "b7e0b3e4.d94dd8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a25feadc.addef8",
+        "type": "ui_text",
+        "z": "b7e0b3e4.d94dd8",
+        "group": "91d84b72.95c97",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "You Said",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 380,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "8f2ece2b.96bff",
+        "type": "ui_text",
+        "z": "b7e0b3e4.d94dd8",
+        "group": "91d84b72.95c97",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Output Answer",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 640,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "91d84b72.95c97",
+        "type": "ui_group",
+        "z": "",
+        "name": "ChatBot",
+        "tab": "6af9244a.5f9a4c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6af9244a.5f9a4c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Customer Care",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
